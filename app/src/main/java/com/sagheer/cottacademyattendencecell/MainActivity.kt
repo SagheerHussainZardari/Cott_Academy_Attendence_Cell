@@ -7,7 +7,9 @@ import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.toast.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +20,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         removeLogoAfter3Sec()
 
+        btn_Login_AdminPage.setOnClickListener {
 
-        //btn_Login()
+        }
+
+
+    }
+
+    private fun login(email: String, password: String) {
+        mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+            Toast().shortToast(this, "Logged In Success")
+        }.addOnFailureListener {
+            Toast().shortToast(this, "Logged In Failed")
+        }
     }
 
     private fun removeLogoAfter3Sec() {
@@ -30,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             iv_splashLogo.visibility = View.GONE
             tv_developedBy.visibility = View.GONE
+            include.visibility = View.VISIBLE
             setCustomToolBar()
         }, 4000)
 

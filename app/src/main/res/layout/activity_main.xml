@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -22,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="fitXY"
+        android:translationZ="4dp"
+
         android:src="@drawable/cottlogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +38,28 @@
         android:textAlignment="center"
         android:text="Developed By: TriRoids"
         android:textColor="#000"
+        android:translationZ="4dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:translationZ="2dp" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/container" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

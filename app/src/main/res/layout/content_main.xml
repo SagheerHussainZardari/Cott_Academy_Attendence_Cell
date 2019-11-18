@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <EditText
+            android:id="@+id/etEmail_AdminPage"
+            style="@style/EditTextBasic"
+            android:hint="Email" />
+
+        <EditText
+            android:id="@+id/etPassword_AdminPage"
+            style="@style/EditTextBasic"
+            android:layout_below="@id/etEmail_AdminPage"
+            android:layout_marginTop="8dp"
+
+            android:hint="****************"
+            android:inputType="textPassword" />
+
+
+        <TextView
+            android:id="@+id/tv_ForgotPassword_AdminPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etPassword_AdminPage"
+            android:layout_alignLeft="@id/etPassword_AdminPage"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:text="Forgot Password"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_Login_AdminPage"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_below="@id/etPassword_AdminPage"
+            android:layout_marginLeft="128dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="128dp"
+            android:elevation="16dp"
+            android:text="Login"
+            android:textColor="#fff"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/colorPrimaryDark"
+            app:strokeWidth="4dp" />
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/forgotPasswordCardView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="8dp"
+        android:elevation="16dp"
+        android:translationZ="16dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="16dp">
+
+        <RelativeLayout
+            android:id="@+id/recyclerView_ForgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Password Reset"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/etEmail_ForgotPassword"
+                style="@style/EditTextBasic"
+                android:layout_centerInParent="true"
+                android:hint="Email" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_NextForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:elevation="16dp"
+                android:text="Next"
+                android:textColor="#fff"
+                app:cornerRadius="8dp"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="4dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <View
+        android:id="@+id/forgotPasswordView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7"
+        android:background="#000"
+        android:visibility="gone" />
+
+
+</RelativeLayout>
