@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
+import android.view.*
 import android.view.animation.Animation
+import android.widget.Toast
 import android.widget.Toolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -17,20 +18,35 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
-        toolbar.title = "Attendence Cell"
-        toolbar.setTitleTextColor(Color.parseColor("#ffffff"))
+        removeLogoAfter3Sec()
 
-        setSupportActionBar(toolbar)
-
-        toolbar.visibility  = View.GONE
-
-        Handler().postDelayed({
-            //iv_splashLogo.animate().translationXBy(-1000f).duration = 5000
-            iv_splashLogo.animate().translationYBy(-5000f).duration = 2500
-            toolbar.visibility  = View.VISIBLE
-        }, 3000)
 
     }
+
+    private fun removeLogoAfter3Sec() {
+        Handler().postDelayed({
+            iv_splashLogo.animate().alpha(0f).duration = 3000
+            tv_developedBy.animate().alpha(0f).duration = 3000
+        }, 3000)
+        Handler().postDelayed({
+            iv_splashLogo.visibility = View.GONE
+            tv_developedBy.visibility = View.GONE
+            setCustomToolBar()
+        }, 6000)
+
+    }
+    private fun setCustomToolBar() {
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        toolbar.title = "Attendence Cell"
+        toolbar.setTitleTextColor(Color.parseColor("#ffffff"))
+        setSupportActionBar(toolbar)
+        toolbar.visibility  = View.VISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu , menu)
+        return true
+    }
+
 
 }
