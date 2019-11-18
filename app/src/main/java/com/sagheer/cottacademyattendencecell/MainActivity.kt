@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.sagheer.forms.Email
 import com.toast.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -21,18 +22,28 @@ class MainActivity : AppCompatActivity() {
         removeLogoAfter3Sec()
 
         btn_Login_AdminPage.setOnClickListener {
-
+            login(etEmail_AdminPage.text.toString(), etPassword_AdminPage.text.toString())
         }
 
 
     }
 
     private fun login(email: String, password: String) {
-        mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-            Toast().shortToast(this, "Logged In Success")
-        }.addOnFailureListener {
-            Toast().shortToast(this, "Logged In Failed")
-        }
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            if (Email().isEmail(email)) {
+
+                mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                    Toast().shortToast(this, "Logged In Success")
+                }.addOnFailureListener {
+                    Toast().shortToast(this, "Logged In Failed")
+                }
+
+            } else
+                Toast().shortToast(this, "Email Should Be Valid")
+        } else
+            Toast().shortToast(this, "Fill All Fields Please")
+
     }
 
     private fun removeLogoAfter3Sec() {
