@@ -1,18 +1,13 @@
 package com.sagheer.cottacademyattendencecell
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
-import android.view.*
-import android.view.animation.Animation
-import android.widget.Toast
-import android.widget.Toolbar
+import android.view.Menu
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
-import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         removeLogoAfter3Sec()
+
+
+        //btn_Login()
     }
 
     private fun removeLogoAfter3Sec() {
