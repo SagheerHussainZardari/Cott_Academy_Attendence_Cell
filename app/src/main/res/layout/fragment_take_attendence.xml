@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
+    android:translationZ="24dp"
+    tools:context=".Fragments.TakeAttendence">
+
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="64dp"
+        android:background="@drawable/edittext_background"
+        android:popupElevation="8dp" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerSubject"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/spinnerTeacher"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:background="@drawable/edittext_background"
+        android:popupElevation="8dp" />
+
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerTiming"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/spinnerSubject"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="64dp"
+        android:background="@drawable/edittext_background"
+        android:popupElevation="8dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_TakeAttendence"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@id/spinnerTiming"
+        android:layout_alignStart="@+id/spinnerTiming"
+        android:layout_alignEnd="@+id/spinnerTiming"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="48dp"
+        android:elevation="16dp"
+        android:text="Take Attendence"
+        android:textColor="#fff"
+        app:cornerRadius="8dp"
+        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeWidth="4dp" />
+
+    <View
+        android:id="@+id/AfterLoggedInView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@color/colorPrimaryDark"
+        android:translationZ="3dp" />
+
+    <ProgressBar
+        android:id="@+id/AfterLoggedInProgressbar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_centerInParent="true"
+        android:translationZ="4dp" />
+</RelativeLayout>

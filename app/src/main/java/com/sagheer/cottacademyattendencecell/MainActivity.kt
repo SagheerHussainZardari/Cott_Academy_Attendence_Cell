@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.sagheer.cottacademyattendencecell.Fragments.TakeAttendence
 import com.sagheer.forms.Email
 import com.toast.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             if (Email().isEmail(email)) {
 
                 mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-                    Toast().shortToast(this, "Logged In Success")
+                    openTakeAttendenceFragment()
                 }.addOnFailureListener {
                     Toast().shortToast(this, "Logged In Failed")
                 }
@@ -43,6 +44,13 @@ class MainActivity : AppCompatActivity() {
                 Toast().shortToast(this, "Email Should Be Valid")
         } else
             Toast().shortToast(this, "Fill All Fields Please")
+
+    }
+
+    private fun openTakeAttendenceFragment() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container, TakeAttendence())
+            .commit()
 
     }
 
@@ -56,6 +64,10 @@ class MainActivity : AppCompatActivity() {
             tv_developedBy.visibility = View.GONE
             include.visibility = View.VISIBLE
             setCustomToolBar()
+            if (mAuth.currentUser != null)
+                include.visibility = View.GONE
+
+
         }, 4000)
 
     }
@@ -74,5 +86,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (mAuth.currentUser != null) {
+            openTakeAttendenceFragment()
+        }
+
+    }
 
 }
