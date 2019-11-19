@@ -104,10 +104,12 @@ class TakeAttendence : Fragment() {
                 if (listTeacher.sorted()[position] == (" Select Teacher")) {
                     teacherSelected = listTeacher.sorted()[position]
                     spinnerSubject.isEnabled = false
+                    btn_TakeAttendence.isEnabled = false
                 } else {
                     teacherSelected = listTeacher.sorted()[position]
                     setDataForSubjectSpinner(teacherSelected)
                     spinnerSubject.isEnabled = true
+                    btn_TakeAttendence.isEnabled = true
                 }
             }
         }
@@ -148,10 +150,12 @@ class TakeAttendence : Fragment() {
             ) {
                 if (listSubject.sorted()[position] == (" Select Subject")) {
                     subjectSelected = listSubject.sorted()[position]
+                    btn_TakeAttendence.isEnabled = false
                     spinnerTiming.isEnabled = false
                 } else {
                     subjectSelected = listSubject.sorted()[position]
                     spinnerTiming.isEnabled = true
+                    btn_TakeAttendence.isEnabled = true
                     setDataForTimingSpinner()
                 }
             }

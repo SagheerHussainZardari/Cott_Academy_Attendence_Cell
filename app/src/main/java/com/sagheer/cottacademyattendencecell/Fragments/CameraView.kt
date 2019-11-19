@@ -96,14 +96,22 @@ class CameraView(private var subjectSelected: String) : Fragment() {
             for (item in it) {
                 when (item.valueType) {
                     FirebaseVisionBarcode.TYPE_TEXT -> {
-                        rollNumber = item.rawValue.toString().substring(5, 10)
-                        studentName = item.rawValue.toString().substringAfter("Name:")
-                        Toast().longToast(requireContext(), "Roll:$rollNumber\nName:$studentName")
-                        // if a text is scanned than is takesAttendence and make Scan button enabled and isDetected to TRUE because a Text is detected
-                        takeAttendence(subjectSelected, rollNumber, studentName)
-                        isDetectedQR = true
-                        btnScan.isEnabled = true
-                        btnScan.visibility = View.VISIBLE
+                        if (item.rawValue.toString().contains("Roll:")) {
+                            rollNumber = item.rawValue.toString().substring(5, 10)
+                            studentName = item.rawValue.toString().substringAfter("Name:")
+                            takeAttendence(subjectSelected, rollNumber, studentName)
+                            isDetectedQR = true
+                            btnScan.isEnabled = true
+                            btnScan.visibility = View.VISIBLE
+                        } else {
+                            isDetectedQR = true
+                            btnScan.isEnabled = true
+                            btnScan.visibility = View.VISIBLE
+                            Toast().shortToast(
+                                requireContext(),
+                                "This QR is not from Cott Academy!!"
+                            )
+                        }
                     }
                 }
             }
