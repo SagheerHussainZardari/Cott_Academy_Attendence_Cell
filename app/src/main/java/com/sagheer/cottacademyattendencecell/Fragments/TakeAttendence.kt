@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sagheer.cottacademyattendencecell.R
-import com.toast.Toast
 import kotlinx.android.synthetic.main.fragment_take_attendence.*
 
 class TakeAttendence : Fragment() {
@@ -41,6 +40,9 @@ class TakeAttendence : Fragment() {
         AfterLoggedInProgressbar.visibility = View.VISIBLE
         AfterLoggedInView.visibility = View.VISIBLE
         setDataForTeacherSpinner()
+        spinnerSubject.isEnabled = false
+        spinnerTiming.isEnabled = false
+        btn_TakeAttendence.isEnabled = false
     }
 
     private fun setDataForTeacherSpinner() {
@@ -92,11 +94,9 @@ class TakeAttendence : Fragment() {
             ) {
                 if (listTeacher.sorted()[position] == (" Select Teacher")) {
                     teacherSelected = listTeacher.sorted()[position]
-                    Toast().shortToast(requireContext(), listTeacher.sorted()[position])
                     spinnerSubject.isEnabled = false
                 } else {
                     teacherSelected = listTeacher.sorted()[position]
-                    Toast().shortToast(requireContext(), listTeacher.sorted()[position])
                     setDataForSubjectSpinner(teacherSelected)
                     spinnerSubject.isEnabled = true
                 }
@@ -117,13 +117,76 @@ class TakeAttendence : Fragment() {
                         )]
                     )
                         listSubject.add(subject.child("subName").value.toString())
+
                 }
+
                 spinnerSubject.adapter =
                     ArrayAdapter<String>(context!!, R.layout.spinner_item, listSubject.sorted())
-
+                spinnerSubjectListner()
             }
         })
     }
 
+    fun spinnerSubjectListner() {
+        spinnerSubject.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (listSubject.sorted()[position] == (" Select Subject")) {
+                    subjectSelected = listSubject.sorted()[position]
+                    spinnerTiming.isEnabled = false
+                } else {
+                    subjectSelected = listSubject.sorted()[position]
+                    spinnerTiming.isEnabled = true
+                    setDataForTimingSpinner()
+                }
+            }
+        }
+    }
+
+    private fun setDataForTimingSpinner() {
+        dbRootRef.child("Timings").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {}
+
+            override fun onDataChange(p0: DataSnapshot) {
+                listTiming.clear()
+                listTiming.add(" Select Timing")
+                for (time in p0.children) {
+                    listTiming.add(time.value.toString())
+                }
+
+                spinnerTiming.adapter =
+                    ArrayAdapter<String>(context!!, R.layout.spinner_item, listTiming.sorted())
+                spinnerTimingListner()
+            }
+        })
+    }
+
+    private fun spinnerTimingListner() {
+        spinnerTiming.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (listTiming.sorted()[position] == (" Select Timing")) {
+                    timingSelected = listTiming.sorted()[position]
+                    btn_TakeAttendence.isEnabled = false
+                } else {
+                    timingSelected = listTiming.sorted()[position]
+                    btn_TakeAttendence.isEnabled = true
+
+                }
+            }
+        }
+    }
 
 }
