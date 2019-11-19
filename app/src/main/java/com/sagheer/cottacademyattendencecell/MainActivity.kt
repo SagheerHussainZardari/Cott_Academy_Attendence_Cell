@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
             if (Email().isEmail(email)) {
 
                 mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                    Toast().shortToast(this, "Logged In Success")
+                    include.visibility = View.GONE
                     openTakeAttendenceFragment()
                 }.addOnFailureListener {
                     Toast().shortToast(this, "Logged In Failed")
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openTakeAttendenceFragment() {
         supportFragmentManager.beginTransaction()
-            .add(R.id.container, TakeAttendence())
+            .replace(R.id.container, TakeAttendence())
             .commit()
 
     }
@@ -93,6 +96,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu , menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_Logout -> {
+                mAuth.signOut()
+                this.finish()
+                true
+            }
+            R.id.action_View -> {
+
+                true
+            }
+            else -> false
+        }
     }
 
     override fun onResume() {
