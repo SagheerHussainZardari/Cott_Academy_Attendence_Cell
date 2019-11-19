@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.sagheer.cottacademyattendencecell.Fragments.CameraView
 import com.sagheer.cottacademyattendencecell.Fragments.TakeAttendence
 import com.sagheer.forms.Email
 import com.toast.Toast
@@ -50,6 +51,14 @@ class MainActivity : AppCompatActivity() {
     private fun openTakeAttendenceFragment() {
         supportFragmentManager.beginTransaction()
             .add(R.id.container, TakeAttendence())
+            .commit()
+
+    }
+
+    fun openCameraViewFragment(cameraView: CameraView) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, cameraView)
+            .addToBackStack("cameraView")
             .commit()
 
     }

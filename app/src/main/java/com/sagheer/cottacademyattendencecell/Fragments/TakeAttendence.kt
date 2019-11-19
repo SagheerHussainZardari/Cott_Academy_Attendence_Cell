@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.sagheer.cottacademyattendencecell.MainActivity
 import com.sagheer.cottacademyattendencecell.R
 import kotlinx.android.synthetic.main.fragment_take_attendence.*
 
@@ -32,6 +33,14 @@ class TakeAttendence : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_take_attendence, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btn_TakeAttendence.setOnClickListener {
+            (activity as MainActivity).openCameraViewFragment(CameraView(subjectSelected))
+        }
     }
 
 
