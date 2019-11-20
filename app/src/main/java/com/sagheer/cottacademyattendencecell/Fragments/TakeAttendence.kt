@@ -39,7 +39,13 @@ class TakeAttendence : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_TakeAttendence.setOnClickListener {
-            (activity as MainActivity).openCameraViewFragment(CameraView(subjectSelected))
+            (activity as MainActivity).openCameraViewFragment(
+                CameraView(
+                    subjectSelected,
+                    teacherSelected,
+                    timingSelected
+                )
+            )
         }
     }
 

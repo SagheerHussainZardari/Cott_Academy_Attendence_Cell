@@ -22,7 +22,11 @@ import com.toast.Toast
 import kotlinx.android.synthetic.main.fragment_camera_view.*
 
 
-class CameraView(private var subjectSelected: String) : Fragment() {
+class CameraView(
+    private var subjectSelected: String,
+    private var teacherSelected: String,
+    private var timingSelected: String
+) : Fragment() {
 
 
     private lateinit var cameraView: CameraView
@@ -137,12 +141,21 @@ class CameraView(private var subjectSelected: String) : Fragment() {
                         currentPresentValue = p0.value.toString().toInt()
                         dbRootRef.child("Students").child(rollNumberDetected).child(subjectSelected)
                             .child("Present").setValue((currentPresentValue + 1))
+                        dbRootRef.child("Students").child(rollNumberDetected).child(subjectSelected)
+                            .child("subTeacher").setValue(teacherSelected)
+                        dbRootRef.child("Students").child(rollNumberDetected).child(subjectSelected)
+                            .child("subTiming").setValue(timingSelected)
+
                     } else {
                         dbRootRef.child("Students").child(rollNumberDetected).child("stdName")
                             .setValue(studentName)
                         //if it is null it creates New User and Set Values
                         dbRootRef.child("Students").child(rollNumberDetected).child(subjectSelected)
                             .child("Present").setValue(1)
+                        dbRootRef.child("Students").child(rollNumberDetected).child(subjectSelected)
+                            .child("subTeacher").setValue(teacherSelected)
+                        dbRootRef.child("Students").child(rollNumberDetected).child(subjectSelected)
+                            .child("subTiming").setValue(timingSelected)
                     }
                 }
             })

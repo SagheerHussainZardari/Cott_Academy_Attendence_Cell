@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.sagheer.cottacademyattendencecell.Fragments.CameraView
 import com.sagheer.cottacademyattendencecell.Fragments.TakeAttendence
+import com.sagheer.cottacademyattendencecell.Fragments.ViewData
 import com.sagheer.forms.Email
 import com.toast.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -66,6 +67,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun openViewDataFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, ViewData())
+            .addToBackStack("ViewData")
+            .commit()
+
+    }
+
     private fun removeLogoAfter3Sec() {
         Handler().postDelayed({
             iv_splashLogo.animate().alpha(0f).duration = 2000
@@ -106,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_View -> {
-
+                openViewDataFragment()
                 true
             }
             else -> false
