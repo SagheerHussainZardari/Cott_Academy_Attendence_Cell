@@ -39,7 +39,7 @@ class TakeAttendence : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_TakeAttendence.setOnClickListener {
-            (activity as MainActivity).openCameraViewFragment(
+            (activity as MainActivity).openFragment(
                 CameraView(
                     subjectSelected,
                     teacherSelected,
@@ -96,31 +96,6 @@ class TakeAttendence : Fragment() {
         })
     }
 
-
-    fun spinnerTeacherListner() {
-        spinnerTeacher.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (listTeacher.sorted()[position] == (" Select Teacher")) {
-                    teacherSelected = listTeacher.sorted()[position]
-                    spinnerSubject.isEnabled = false
-                    btn_TakeAttendence.isEnabled = false
-                } else {
-                    teacherSelected = listTeacher.sorted()[position]
-                    setDataForSubjectSpinner(teacherSelected)
-                    spinnerSubject.isEnabled = true
-                    btn_TakeAttendence.isEnabled = true
-                }
-            }
-        }
-    }
-
     private fun setDataForSubjectSpinner(teacherSelected: String) {
         dbRootRef.child("Subjects").addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
@@ -144,7 +119,49 @@ class TakeAttendence : Fragment() {
         })
     }
 
-    fun spinnerSubjectListner() {
+    private fun setDataForTimingSpinner() {
+        dbRootRef.child("Timings").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {}
+
+            override fun onDataChange(p0: DataSnapshot) {
+                listTiming.clear()
+                listTiming.add(" Select Timing")
+                for (time in p0.children) {
+                    listTiming.add(time.value.toString())
+                }
+
+                spinnerTiming.adapter =
+                    ArrayAdapter<String>(context!!, R.layout.spinner_item, listTiming.sorted())
+                spinnerTimingListner()
+            }
+        })
+    }
+
+    private fun spinnerTeacherListner() {
+        spinnerTeacher.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (listTeacher.sorted()[position] == (" Select Teacher")) {
+                    teacherSelected = listTeacher.sorted()[position]
+                    spinnerSubject.isEnabled = false
+                    btn_TakeAttendence.isEnabled = false
+                } else {
+                    teacherSelected = listTeacher.sorted()[position]
+                    setDataForSubjectSpinner(teacherSelected)
+                    spinnerSubject.isEnabled = true
+                    btn_TakeAttendence.isEnabled = true
+                }
+            }
+        }
+    }
+
+    private fun spinnerSubjectListner() {
         spinnerSubject.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
@@ -166,24 +183,6 @@ class TakeAttendence : Fragment() {
                 }
             }
         }
-    }
-
-    private fun setDataForTimingSpinner() {
-        dbRootRef.child("Timings").addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {}
-
-            override fun onDataChange(p0: DataSnapshot) {
-                listTiming.clear()
-                listTiming.add(" Select Timing")
-                for (time in p0.children) {
-                    listTiming.add(time.value.toString())
-                }
-
-                spinnerTiming.adapter =
-                    ArrayAdapter<String>(context!!, R.layout.spinner_item, listTiming.sorted())
-                spinnerTimingListner()
-            }
-        })
     }
 
     private fun spinnerTimingListner() {

@@ -7,8 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.sagheer.cottacademyattendencecell.Fragments.CameraView
 import com.sagheer.cottacademyattendencecell.Fragments.TakeAttendence
 import com.sagheer.cottacademyattendencecell.Fragments.ViewData
 import com.sagheer.forms.Email
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                     Toast().shortToast(this, "Logged In Success")
                     include.visibility = View.GONE
-                    openTakeAttendenceFragment()
+                    openFragmentWithoutBackStack(TakeAttendence())
                 }.addOnFailureListener {
                     Toast().shortToast(this, "Logged In Failed")
                 }
@@ -52,28 +52,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun openTakeAttendenceFragment() {
+    private fun openFragmentWithoutBackStack(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, TakeAttendence())
             .commit()
 
     }
 
-    fun openCameraViewFragment(cameraView: CameraView) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, cameraView)
-            .addToBackStack("cameraView")
-            .commit()
 
+    fun openFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .addToBackStack("fragment $fragment")
+            .commit()
     }
 
-    fun openViewDataFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, ViewData())
-            .addToBackStack("ViewData")
-            .commit()
-
-    }
 
     private fun removeLogoAfter3Sec() {
         Handler().postDelayed({
@@ -87,7 +80,6 @@ class MainActivity : AppCompatActivity() {
             setCustomToolBar()
             if (mAuth.currentUser != null)
                 include.visibility = View.GONE
-
 
         }, 4000)
 
@@ -115,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_View -> {
-                openViewDataFragment()
+                openFragment(ViewData())
                 true
             }
             else -> false
@@ -126,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
 
         if (mAuth.currentUser != null) {
-            openTakeAttendenceFragment()
+            openFragmentWithoutBackStack(TakeAttendence())
         }
 
     }

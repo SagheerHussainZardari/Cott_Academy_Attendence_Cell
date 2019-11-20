@@ -3,8 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.ViewData">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_ViewByTeacher"
+        style="@style/EditTextBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View By Teacher" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_ViewBySubject"
+        style="@style/EditTextBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_ViewByTeacher"
+        android:text="View By Subject" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_ViewByStudent"
+        style="@style/EditTextBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_ViewBySubject"
+        android:text="View By Student" />
 
 
 </RelativeLayout>
