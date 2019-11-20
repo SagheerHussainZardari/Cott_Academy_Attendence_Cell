@@ -49,6 +49,7 @@ class CameraView(
     @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Toast().shortToast(requireContext(), "Click QR Button For Attendence")
         mainLinearCameraViewFragment.setOnClickListener { }
 
         // first initialize cameraView Variable
