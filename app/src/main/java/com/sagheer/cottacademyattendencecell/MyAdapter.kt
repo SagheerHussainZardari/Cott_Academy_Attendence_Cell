@@ -1,6 +1,7 @@
 package com.sagheer.cottacademyattendencecell
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +29,27 @@ class MyAdapter(var context: Context, var dataList: ArrayList<ViewByStudentModel
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.view.tv_subjectName_FragmentViewByStudent.text = dataList[position].subName
-        holder.view.tv_Present_FragmentViewByStudent.text = dataList[position].subPresent
-        holder.view.tv_Absent_FragmentViewByStudent.text = dataList[position].subAbsent
-        holder.view.tv_TotalClasses_FragmentViewByStudent.text = dataList[position].subTotalClasses
-        holder.view.tv_Percentage_FragmentViewByStudent.text = dataList[position].subPercentage
+        if (position == 0) {
+            holder.view.tv_subjectName_FragmentViewByStudent.setBackgroundColor(Color.parseColor("#20A5F7"))
+            holder.view.tv_Present_FragmentViewByStudent.setBackgroundColor(Color.parseColor("#20A5F7"))
+            holder.view.tv_Absent_FragmentViewByStudent.setBackgroundColor(Color.parseColor("#20A5F7"))
+            holder.view.tv_TotalClasses_FragmentViewByStudent.setBackgroundColor(Color.parseColor("#20A5F7"))
+            holder.view.tv_Percentage_FragmentViewByStudent.setBackgroundColor(Color.parseColor("#20A5F7"))
+
+            holder.view.tv_subjectName_FragmentViewByStudent.text = dataList[position].subName
+            holder.view.tv_Present_FragmentViewByStudent.text = dataList[position].subPresent
+            holder.view.tv_Absent_FragmentViewByStudent.text = dataList[position].subAbsent
+            holder.view.tv_TotalClasses_FragmentViewByStudent.text =
+                dataList[position].subTotalClasses
+            holder.view.tv_Percentage_FragmentViewByStudent.text = dataList[position].subPercentage
+
+        } else {
+            holder.view.tv_subjectName_FragmentViewByStudent.text = dataList[position].subName
+            holder.view.tv_Present_FragmentViewByStudent.text = dataList[position].subPresent
+            holder.view.tv_Absent_FragmentViewByStudent.text = dataList[position].subAbsent
+            holder.view.tv_TotalClasses_FragmentViewByStudent.text =
+                dataList[position].subTotalClasses
+            holder.view.tv_Percentage_FragmentViewByStudent.text = dataList[position].subPercentage
+        }
     }
 }
