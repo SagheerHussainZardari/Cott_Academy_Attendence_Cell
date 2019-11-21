@@ -6,12 +6,31 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.viewDataFragments.ViewDataByStudent">
 
+
+    <AutoCompleteTextView
+        android:id="@+id/autoTextCompleteViewDataByStudent"
+        style="@style/EditTextBasic"
+        android:layout_marginTop="2dp"
+        android:hint="Search Roll Number"
+        android:inputType="number" />
     <TextView
+        android:id="@+id/tv_studentName_viewbystudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoTextCompleteViewDataByStudent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Sagheer Hussain Zardari"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_ViewByStudent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="View Data By Student"
-        android:textSize="36dp" />
+        android:layout_below="@id/tv_studentName_viewbystudent" />
 
 
 </RelativeLayout>

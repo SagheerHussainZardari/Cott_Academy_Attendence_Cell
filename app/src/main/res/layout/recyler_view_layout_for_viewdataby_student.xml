@@ -12,51 +12,52 @@
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
+        android:layout_marginRight="2dp"
         android:gravity="center"
         android:text="Sub"
+        android:layout_weight="2"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_Present_FragmentViewByStudent"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_weight="1"
+        android:layout_weight="0.75"
         android:gravity="center"
         android:text="P"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_Absent_FragmentViewByStudent"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_weight="1"
+        android:layout_weight="0.75"
         android:gravity="center"
         android:text="A"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_TotalClasses_FragmentViewByStudent"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_weight="1"
+        android:layout_weight="0.75"
         android:gravity="center"
         android:text="T"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_Percentage_FragmentViewByStudent"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_weight="1"
+        android:layout_weight="0.75"
         android:gravity="center"
         android:text="%"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
 
 </LinearLayout>

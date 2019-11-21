@@ -27,6 +27,7 @@ class TakeAttendence : Fragment() {
     private var teacherSelected: String = ""
     private var timingSelected: String = ""
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,8 +56,8 @@ class TakeAttendence : Fragment() {
         AfterLoggedInProgressbar.visibility = View.VISIBLE
         AfterLoggedInView.visibility = View.VISIBLE
         setDataForTeacherSpinner()
-        spinnerSubject.isEnabled = false
-        spinnerTiming.isEnabled = false
+        spinnerSubject?.isEnabled = false
+        spinnerTiming?.isEnabled = false
         btn_TakeAttendence.isEnabled = false
     }
 
@@ -72,9 +73,9 @@ class TakeAttendence : Fragment() {
                 listTiming.clear()
                 listSubject.add(" Select Subject")
                 listTiming.add(" Select Timing")
-                spinnerSubject.adapter =
+                spinnerSubject?.adapter =
                     ArrayAdapter<String>(context!!, R.layout.spinner_item, listSubject.sorted())
-                spinnerTiming.adapter =
+                spinnerTiming?.adapter =
                     ArrayAdapter<String>(context!!, R.layout.spinner_item, listTiming.sorted())
 
                 listTeacher.clear()
@@ -86,12 +87,12 @@ class TakeAttendence : Fragment() {
                     listTeacherID.add(teacher.key.toString())
                 }
 
-                spinnerTeacher.adapter =
+                spinnerTeacher?.adapter =
                     ArrayAdapter<String>(context!!, R.layout.spinner_item, listTeacher.sorted())
 
 
-                AfterLoggedInProgressbar.visibility = View.GONE
-                AfterLoggedInView.visibility = View.GONE
+                AfterLoggedInProgressbar?.visibility = View.GONE
+                AfterLoggedInView?.visibility = View.GONE
             }
         })
     }
@@ -112,7 +113,7 @@ class TakeAttendence : Fragment() {
 
                 }
 
-                spinnerSubject.adapter =
+                spinnerSubject?.adapter =
                     ArrayAdapter<String>(context!!, R.layout.spinner_item, listSubject.sorted())
                 spinnerSubjectListner()
             }
@@ -130,7 +131,7 @@ class TakeAttendence : Fragment() {
                     listTiming.add(time.value.toString())
                 }
 
-                spinnerTiming.adapter =
+                spinnerTiming?.adapter =
                     ArrayAdapter<String>(context!!, R.layout.spinner_item, listTiming.sorted())
                 spinnerTimingListner()
             }
@@ -138,7 +139,7 @@ class TakeAttendence : Fragment() {
     }
 
     private fun spinnerTeacherListner() {
-        spinnerTeacher.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerTeacher?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(
@@ -149,12 +150,12 @@ class TakeAttendence : Fragment() {
             ) {
                 if (listTeacher.sorted()[position] == (" Select Teacher")) {
                     teacherSelected = listTeacher.sorted()[position]
-                    spinnerSubject.isEnabled = false
+                    spinnerSubject?.isEnabled = false
                     btn_TakeAttendence.isEnabled = false
                 } else {
                     teacherSelected = listTeacher.sorted()[position]
                     setDataForSubjectSpinner(teacherSelected)
-                    spinnerSubject.isEnabled = true
+                    spinnerSubject?.isEnabled = true
                     btn_TakeAttendence.isEnabled = true
                 }
             }
@@ -162,7 +163,7 @@ class TakeAttendence : Fragment() {
     }
 
     private fun spinnerSubjectListner() {
-        spinnerSubject.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerSubject?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(
@@ -174,10 +175,10 @@ class TakeAttendence : Fragment() {
                 if (listSubject.sorted()[position] == (" Select Subject")) {
                     subjectSelected = listSubject.sorted()[position]
                     btn_TakeAttendence.isEnabled = false
-                    spinnerTiming.isEnabled = false
+                    spinnerTiming?.isEnabled = false
                 } else {
                     subjectSelected = listSubject.sorted()[position]
-                    spinnerTiming.isEnabled = true
+                    spinnerTiming?.isEnabled = true
                     btn_TakeAttendence.isEnabled = true
                     setDataForTimingSpinner()
                 }
@@ -186,7 +187,7 @@ class TakeAttendence : Fragment() {
     }
 
     private fun spinnerTimingListner() {
-        spinnerTiming.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerTiming?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(
