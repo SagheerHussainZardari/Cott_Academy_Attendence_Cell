@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sagheer.cottacademyattendencecell.MainActivity
 import com.sagheer.cottacademyattendencecell.R
+import com.toast.Toast
 import kotlinx.android.synthetic.main.fragment_take_attendence.*
 
 class TakeAttendence : Fragment() {
@@ -40,13 +41,20 @@ class TakeAttendence : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_TakeAttendence.setOnClickListener {
-            (activity as MainActivity).openFragment(
-                CameraView(
-                    subjectSelected,
-                    teacherSelected,
-                    timingSelected
+
+            if (subjectSelected == " Select Subject" || teacherSelected == " Select Teacher" || timingSelected == " Select Timing") {
+                Toast().shortToast(requireContext(), "Select All Fields First!!!")
+
+            } else {
+                (activity as MainActivity).openFragment(
+                    CameraView(
+                        subjectSelected,
+                        teacherSelected,
+                        timingSelected
+                    )
                 )
-            )
+            }
+
         }
     }
 
@@ -58,7 +66,6 @@ class TakeAttendence : Fragment() {
         setDataForTeacherSpinner()
         spinnerSubject?.isEnabled = false
         spinnerTiming?.isEnabled = false
-        btn_TakeAttendence.isEnabled = false
     }
 
     private fun setDataForTeacherSpinner() {
@@ -151,12 +158,10 @@ class TakeAttendence : Fragment() {
                 if (listTeacher.sorted()[position] == (" Select Teacher")) {
                     teacherSelected = listTeacher.sorted()[position]
                     spinnerSubject?.isEnabled = false
-                    btn_TakeAttendence.isEnabled = false
                 } else {
                     teacherSelected = listTeacher.sorted()[position]
                     setDataForSubjectSpinner(teacherSelected)
                     spinnerSubject?.isEnabled = true
-                    btn_TakeAttendence.isEnabled = true
                 }
             }
         }
@@ -174,12 +179,10 @@ class TakeAttendence : Fragment() {
             ) {
                 if (listSubject.sorted()[position] == (" Select Subject")) {
                     subjectSelected = listSubject.sorted()[position]
-                    btn_TakeAttendence.isEnabled = false
                     spinnerTiming?.isEnabled = false
                 } else {
                     subjectSelected = listSubject.sorted()[position]
                     spinnerTiming?.isEnabled = true
-                    btn_TakeAttendence.isEnabled = true
                     setDataForTimingSpinner()
                 }
             }
@@ -198,14 +201,12 @@ class TakeAttendence : Fragment() {
             ) {
                 if (listTiming.sorted()[position] == (" Select Timing")) {
                     timingSelected = listTiming.sorted()[position]
-                    btn_TakeAttendence.isEnabled = false
                 } else {
                     timingSelected = listTiming.sorted()[position]
-                    btn_TakeAttendence.isEnabled = true
-
                 }
             }
         }
     }
+
 
 }
