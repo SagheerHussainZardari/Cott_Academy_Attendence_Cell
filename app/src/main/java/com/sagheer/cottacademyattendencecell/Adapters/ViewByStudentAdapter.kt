@@ -1,4 +1,4 @@
-package com.sagheer.cottacademyattendencecell
+package com.sagheer.cottacademyattendencecell.Adapters
 
 import android.content.Context
 import android.graphics.Color
@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sagheer.cottacademyattendencecell.DataModels.ViewByStudentModel
+import com.sagheer.cottacademyattendencecell.R
 import kotlinx.android.synthetic.main.recyler_view_layout_for_viewdataby_student.view.*
 
-class MyAdapter(var context: Context, var dataList: ArrayList<ViewByStudentModel>) :
-    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class ViewByStudentAdapter(var context: Context, var dataList: ArrayList<ViewByStudentModel>) :
+    RecyclerView.Adapter<ViewByStudentAdapter.MyViewHolder>() {
 
     class MyViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 

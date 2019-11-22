@@ -12,8 +12,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.sagheer.cottacademyattendencecell.Adapters.ViewByStudentAdapter
 import com.sagheer.cottacademyattendencecell.DataModels.ViewByStudentModel
-import com.sagheer.cottacademyattendencecell.MyAdapter
 import com.sagheer.cottacademyattendencecell.R
 import kotlinx.android.synthetic.main.fragment_view_data_by_student.*
 
@@ -116,7 +116,11 @@ class ViewDataByStudent : Fragment() {
     private fun setRecyclerViewData(dataForStudent: ArrayList<ViewByStudentModel>) {
         recyclerView_ViewByStudent.setHasFixedSize(true)
         recyclerView_ViewByStudent.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView_ViewByStudent.adapter = MyAdapter(requireContext(), dataForStudent)
+        recyclerView_ViewByStudent.adapter =
+            ViewByStudentAdapter(
+                requireContext(),
+                dataForStudent
+            )
     }
 
     override fun onStart() {
