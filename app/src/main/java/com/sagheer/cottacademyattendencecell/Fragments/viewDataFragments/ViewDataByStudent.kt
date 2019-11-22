@@ -49,7 +49,6 @@ class ViewDataByStudent : Fragment() {
                 studentsRollNumbersList
             )
         )
-        dataForStudent.add(ViewByStudentModel("subName", "P", "A", "T", "%"))
 
         setListnerForAutoTextComplete()
     }
