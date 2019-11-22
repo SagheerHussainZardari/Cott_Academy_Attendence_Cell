@@ -56,7 +56,7 @@ class ViewDataByStudent : Fragment() {
 
     private fun setListnerForAutoTextComplete() {
         autoTextCompleteViewDataByStudent.setOnItemClickListener { parent, view, position, id ->
-            setRecyclerViewForCurrentStudent(studentsRollNumbersList[position])
+            setRecyclerViewForCurrentStudent(autoTextCompleteViewDataByStudent.text.toString())
         }
     }
 
