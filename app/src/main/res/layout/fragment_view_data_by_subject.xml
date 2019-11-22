@@ -6,12 +6,30 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.viewDataFragments.ViewDataBySubject">
 
+
+    <AutoCompleteTextView
+        android:id="@+id/autoTextCompleteViewDataBySubject"
+        style="@style/EditTextBasic"
+        android:layout_marginTop="2dp"
+        android:hint="Search Subject" />
     <TextView
+        android:id="@+id/tv_subjectName_viewbysubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoTextCompleteViewDataBySubject"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Computer"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_ViewByStudent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="View Data By Subject"
-        android:textSize="36dp" />
+        android:layout_below="@id/tv_subjectName_viewbysubject" />
 
 
 </RelativeLayout>
