@@ -20,7 +20,7 @@
         android:layout_below="@id/autoTextCompleteViewDataByStudent"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Sagheer Hussain Zardari"
+        android:text=""
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="20sp"

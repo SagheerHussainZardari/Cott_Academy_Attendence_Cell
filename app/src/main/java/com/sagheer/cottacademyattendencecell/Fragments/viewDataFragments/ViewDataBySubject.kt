@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener
 import com.sagheer.cottacademyattendencecell.Adapters.ViewBySubjectAdapter
 import com.sagheer.cottacademyattendencecell.DataModels.ViewBySubjectModel
 import com.sagheer.cottacademyattendencecell.R
-import com.toast.Toast
 import kotlinx.android.synthetic.main.fragment_view_data_by_subject.*
 
 /**
@@ -99,7 +98,6 @@ class ViewDataBySubject : Fragment() {
                         absent = ((totalClasses.toInt() - present.toInt()).toString())
                         percentage = (present.toInt() * 100 / totalClasses.toInt()).toString()
 
-                        Toast().shortToast(requireContext(), "in if")
                         dataForSubjects.add(
                             ViewBySubjectModel(
                                 stdName,
@@ -111,7 +109,6 @@ class ViewDataBySubject : Fragment() {
                         )
                     }
                 }
-                Log.d("a", "data: ${dataForSubjects}\n")
                 setRecyclerViewDataBySubjects(dataForSubjects)
             }
         })

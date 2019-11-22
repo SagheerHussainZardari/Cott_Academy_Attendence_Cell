@@ -19,7 +19,7 @@
         android:layout_below="@id/autoTextCompleteViewDataBySubject"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Computer"
+        android:text=""
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="20sp"
