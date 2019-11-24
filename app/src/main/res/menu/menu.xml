@@ -6,12 +6,12 @@
     <item
         android:id="@+id/action_View"
         android:title="View"
-
         app:showAsAction="always"/>
-
+    <item
+        android:id="@+id/action_Update"
+        android:title="Update" />
     <item
         android:id="@+id/action_Logout"
         android:title="Logout"/>
-
 
 </menu>

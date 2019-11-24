@@ -62,6 +62,7 @@ class ViewDataByTeacher : Fragment() {
     }
 
     private fun setRecyclerViewForCurrentTeacher(teacher: String) {
+        //ALTER THAT FUNCTION TOO
         allStudentsOfThatTeacher.clear()
         allStudentsOfThatTeacher.add("Student Name")
         mDBRoot.child("Students").addValueEventListener(object : ValueEventListener {
@@ -78,12 +79,14 @@ class ViewDataByTeacher : Fragment() {
                     }
                 }
                 Log.d("a", "data: $allStudentsOfThatTeacher")
+
                 setRecyclerViewForCurrentTeacherStudents()
             }
         })
 
     }
 
+    //remove this if want something else other than student list
     private fun setRecyclerViewForCurrentTeacherStudents() {
 
         recyclerView_ViewByTeacher.setHasFixedSize(true)
