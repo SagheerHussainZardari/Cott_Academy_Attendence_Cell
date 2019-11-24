@@ -49,7 +49,7 @@ class ViewDataBySubject : Fragment() {
                 subjectsList
             )
         )
-        dataForSubjects.add(ViewBySubjectModel("stdName", "P", "A", "T", "%"))
+        dataForSubjects.add(ViewBySubjectModel("StdName", "P", "A", "T", "%"))
 
         setListnerForAutoTextComplete()
     }

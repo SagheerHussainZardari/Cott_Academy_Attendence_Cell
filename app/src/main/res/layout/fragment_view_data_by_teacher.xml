@@ -6,11 +6,29 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".Fragments.viewDataFragments.ViewDataByTeacher">
 
+    <AutoCompleteTextView
+        android:id="@+id/autoTextCompleteViewDataByTeacher"
+        style="@style/EditTextBasic"
+        android:layout_marginTop="2dp"
+        android:hint="Search Teacher" />
     <TextView
+        android:id="@+id/tv_TeacherName_viewbyTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/autoTextCompleteViewDataByTeacher"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_ViewByTeacher"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="View Data By Teacher"
-        android:textSize="36dp" />
+        android:layout_below="@id/tv_TeacherName_viewbyTeacher" />
+
 
 </RelativeLayout>
