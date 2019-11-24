@@ -2,7 +2,6 @@ package com.sagheer.cottacademyattendencecell.Fragments.viewDataFragments
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,7 +71,6 @@ class ViewDataBySubject : Fragment() {
                         if (sub.key == subject) {
                             stdName = student.child("stdName").value.toString()
                             present = sub.child("Present").value.toString()
-                            Log.d("a", "data: $subject = $stdName,$present\n")
                             getOtherValuesForThatStudent(subject, stdName, present)
                         }
                     }
